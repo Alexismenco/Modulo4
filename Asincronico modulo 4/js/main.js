@@ -5,9 +5,7 @@ class Item {
     constructor(nuevaTarea){
         this.nuevaTarea=nuevaTarea;
         this.crearDiv = function (){
-            
-        if(this.nuevaTarea == ''){
-        } else {
+
             var candado = document.createElement("button");
             var borrar = document.createElement("button");
             var container = document.querySelector(".container");
@@ -23,7 +21,7 @@ class Item {
             array.push(inputNew);
             array.push(candado);
             array.push(borrar);
-            input.value='';
+            
             nuevoDiv.appendChild(array[0]);
             nuevoDiv.appendChild(array[1]);
             nuevoDiv.appendChild(array[2]);
@@ -40,19 +38,23 @@ class Item {
             
             borrar.addEventListener("click", function(){
                 nuevoDiv.remove();
-            });
-            };           
+            });         
         };
     };
 };
 
 botonAgregar.addEventListener("click", function(){
-    var dataInput = new Item(input.value);
-    dataInput.crearDiv();
-    
+    chequearInput();
 });
 
-
+function chequearInput(){
+    if(!input.value ==''){
+        
+        var dataInput = new Item(input.value);
+        dataInput.crearDiv();
+        input.value='';
+    };
+};
 
 
 
